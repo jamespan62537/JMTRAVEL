@@ -1,0 +1,126 @@
+.bg {
+    background-color: black;
+  }
+  .cart-list-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+  .table {
+    margin-bottom: unset;
+  }
+  .table thead {
+    background-color: rgb(78, 87, 97) !important;
+    color: rgb(255, 255, 255) !important;
+    font-size: 20px;
+    font-weight: 600;
+    height: 56px;
+  }
+  .table thead th {
+    height: 56px;
+    vertical-align: middle;
+    border-bottom: unset;
+    border-top: unset;
+  }
+  .table tbody {
+    background-color: rgb(49, 81, 77);
+  }
+  .table tbody .cart-img {
+    background-position: center;
+    background-size: cover;
+  }
+  .table tbody tr {
+    height: 100px;
+  }
+  .table tbody tr td {
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+  }
+  .table tbody .removeBtn {
+    color: rgb(220, 53, 69);
+    background-color: rgb(49, 81, 77);
+    border: unset;
+    border-radius: 3px;
+  }
+  .table tbody .removeBtn:hover {
+    background-color: rgb(220, 53, 69);
+    color: rgb(255, 255, 255);
+    transition: ease-in-out 0.1s;
+  }
+  .check-cart {
+    background-color: rgb(49, 81, 77);
+    border-top: 1px solid rgb(255, 255, 255);
+    flex-direction: column;
+    padding: 12px;
+  }
+  .check-cart .total-price {
+    color: rgb(255, 255, 255);
+  }
+  .check-cart .dis-price {
+    color: rgb(239, 98, 98);
+    font-weight: 600;
+  }
+  .check-cart .next-step {
+    background-color: rgb(255, 255, 255);
+    color: rgb(49, 81, 77);
+    width: 15%;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-decoration: unset;
+    border-radius: 3px;
+    border: 1px solid rgb(49, 81, 77);
+  }
+  .check-cart .next-step:hover {
+    background-color: rgb(49, 81, 77);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    transition: ease-in-out 0.1s;
+  }
+  .cart-list-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background-color: rgb(20, 31, 12);
+  }
+  .cart-list-empty h2 {
+    color: rgb(242, 242, 242);
+    font-family: "微軟正黑體";
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+  .cart-list-empty .btn {
+    color: rgb(242, 242, 242);
+    border: 1px solid rgb(242, 242, 242);
+    font-weight: 400;
+  }
+  .cart-list-empty .btn:hover {
+    border: 1px solid rgb(140, 180, 182);
+    color: rgb(140, 180, 182);
+  }
+  .cart-list-container .coupons-group {
+    justify-content: center;
+    background-color: rgb(49, 81, 77);
+    padding: 12px 0;
+  }
+  .cart-list-container .coupons-group input {
+    width: 30%;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px 0 0 3px;
+  }
+  .cart-list-container .coupons-group button {
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(49, 81, 77);
+    border-radius: 0 3px 3px 0;
+  }
+  .cart-list-container .coupons-group button:hover {
+    color: rgb(49, 81, 77);
+    background-color: rgb(230, 230, 230);
+    transition: 0.1s ease-in-out;
+  }
