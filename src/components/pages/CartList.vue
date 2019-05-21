@@ -37,7 +37,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="input-group flex coupons-group">
+        <div class="input-group flex coupons-group james">
           <input type="text" name id placeholder="請輸入優惠碼" v-model="code">
           <button @click="useCoupons">套用優惠碼</button>
         </div>
