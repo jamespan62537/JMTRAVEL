@@ -8,7 +8,7 @@
         <h2>目前尚無行程</h2>
         <button class="btn" @click="changePage">BACK TO TRAVEL</button>
       </div>
-      <div class="cart-list-container" v-if="cartList.carts.length !== 0">
+      <div class="cart-list-container">
         <!-- 如果 isempty 為 false 代表購物車有品項 -->
         <table class="table" v-if="cartList.carts.length !== 0">
           <thead>
@@ -37,7 +37,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="input-group flex coupons-group">
+        <div class="input-group flex coupons-group" v-if="cartList.carts.length !== 0">
           <input type="text" name id placeholder="請輸入優惠碼" v-model="code">
           <button @click="useCoupons">套用優惠碼</button>
         </div>
