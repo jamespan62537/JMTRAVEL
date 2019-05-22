@@ -1,6 +1,8 @@
 # 歐洲旅遊網站(JM TRAVEL)
 <img src="https://upload.cc/i1/2019/05/22/87pjVc.jpg">
-夢想著漫遊歐洲，因為愛在黎明破曉時
+
+夢想著漫遊歐洲，穿梭在每個巷子
+希望能藉由這個作品拉近與夢想的距離
 
 ## Demo
 https://jamespan62537.github.io/JMTRAVEL/dist/index.html#/
