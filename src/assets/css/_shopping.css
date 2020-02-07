@@ -1,0 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, select, textarea, button {
+    outline: none !important;
+}
+
+/* all */
+.flex {
+    display: flex;
+}
+/* Underline From Center */
+.hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: rgb(199, 147, 89);
+    height: 2.5px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0;
+  }
+
+/* start */
+.nav-location-list {
+    padding: 10px 95px 10px 95px !important;
+    background-color: rgb(78, 87, 97) !important;
+  }
+  .nav-location-list .justify-content-space-around {
+    justify-content: space-around !important;
+  }
+  .nav-location-list .nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(255, 255, 255) !important;
+    font-weight: 700;
+  }
+  
+  .shopping-container {
+    margin: unset;
+    padding: 30px 80px;
+    background-color: rgb(49, 81, 77);
+  }
+  .shopping-container .col-md-4 .card {
+    box-shadow: 1px 1px 9px -4px rgba(0, 0, 0, 1.5) !important;
+  }
+  .shopping-container .col-md-4 .card .card-body .card-title {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .shopping-container .col-md-4 .card .card-body .card-title a {
+    text-decoration: none;
+  }
+  .modal-content .modal-body {
+    padding: 20px 35px;
+  }
+  .modal-content .modal-body blockquote {
+    line-height: 30px;
+  }
+  .modal-content .modal-header .modal-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .cart-btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  .cart-btn-container .cart-btn {
+    position: relative;
+    color: rgb(220, 220, 220);
+  }
+  .cart-btn-container .cart-btn:hover {
+    color: rgb(255, 255, 255);
+  }
+  .cart-btn-container .cart-btn .cart-num {
+    position: absolute;
+    top: -6px;
+    left: 35px;
+    background-color: rgb(220, 53, 69);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 1px 7px;
+    border-radius: 12px;
+  }
