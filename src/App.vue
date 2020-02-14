@@ -1,20 +1,143 @@
 <template>
-  <div id="app">
+  <v-app style="width: 100%;">
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import Login from './components/pages/Login.vue'
+import Login from "./components/pages/Login.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Login,
+    Login
   }
-}
+};
 </script>
 
-<style lang="scss">
-@import "./assets/all.scss";
+<style>
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+}
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  line-height: 1;
+  color: black;
+  background: white;
+}
+ol,
+ul {
+  list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+blockquote,
+q {
+  quotes: "" "";
+}
+
+/* CSS Reset End */
+
+#app {
+  font-family: "微軟正黑體";
+}
+.content-area {
+  width: 100%;
+  height: 100%;
+  padding: 80px 15px 15px 15px;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.5, 1);
+  transition-duration: 0.4s;
+}
+.panel_title {
+  font-size: 18px;
+}
+.panel_content {
+  padding-bottom: 24px;
+}
 </style>
