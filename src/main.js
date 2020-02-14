@@ -25,6 +25,8 @@ import router from './router';
 import './bus';
 import zhTW from 'vee-validate/dist/locale/zh_TW';
 
+import vuetify from './plugins/vuetify'
+
 // filter 套件
 Vue.filter('currency', Currency);
 Vue.filter('date', dateFilter);
@@ -53,6 +55,7 @@ new Vue({
   i18n,
   render: h => h(App),
   router,
+  vuetify
 }).$mount('#app');
 
 // 路由驗證
