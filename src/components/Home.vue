@@ -1,28 +1,31 @@
 <template>
   <div>
     <Alert></Alert>
-    <div class="container">
-      <div class="cover flex">
-        <header class="blog-header fixed-title">
-          <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
-              <a class="text-muted" href="#" @click.prevent="changePage">
-                <img src="../assets/img/logo.png" alt>
-              </a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center bg-b">
-              <router-link to="/" class="btn btn-sm">關於我們</router-link>
-              <router-link to="/shopping" class="btn btn-sm">輕旅歐洲</router-link>
-              <router-link to="/login" class="btn btn-sm">ADMIN</router-link>
-            </div>
+    <v-contant>
+      <v-container>
+        <v-toolbar
+          class="d-flex justify-start grey darken-1"
+          style="position: fixed; left: 0; right: 0; z-index: 5;"
+        >
+          <div class="mr-5">
+            <a class="text-muted" href="#" @click.prevent="changePage">
+              <img src="../assets/img/logo.png" alt />
+            </a>
           </div>
-        </header>
-        <p>TRAVEL NOW</p>
-      </div>
-      <main role="main">
+          <div>
+            <v-btn text dark>關於我們</v-btn>
+            <v-btn text dark>輕旅歐洲</v-btn>
+            <v-btn text dark>ADMIN</v-btn>
+          </div>
+        </v-toolbar>
+      </v-container>
+      <v-container style="margin-top:64px;">
+        <div class="cover d-flex align-end">
+          <p>TRAVEL NOW</p>
+        </div>
         <router-view></router-view>
-      </main>
-    </div>
+      </v-container>
+    </v-contant>
   </div>
 </template>
 
@@ -38,7 +41,7 @@ export default {
   },
   methods: {
     changePage: function() {
-        this.$router.push("/");
+      this.$router.push("/");
     }
   }
 };
