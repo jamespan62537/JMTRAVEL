@@ -24,7 +24,7 @@ https://jamespan62537.github.io/JMTRAVEL/dist/index.html#/
 * API介接 (前台/後台)
 * SCSS
 * Plugin :
-  * [vue-loading-overlay](https://vuetifyjs.com/en/)
+  * [Vuetify](https://vuetifyjs.com/en/)
   * [Bootstrap 4](https://bootstrap-vue.js.org/docs)
   * [Axios](https://github.com/axios/axios)
   * [vue-axios](https://www.npmjs.com/package/vue-axios)
