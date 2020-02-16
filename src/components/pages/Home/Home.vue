@@ -13,9 +13,9 @@
             </a>
           </div>
           <div>
-            <v-btn text dark>關於我們</v-btn>
-            <v-btn text dark>輕旅歐洲</v-btn>
-            <v-btn text dark>ADMIN</v-btn>
+            <v-btn text dark @click="aboutUs">關於我們</v-btn>
+            <v-btn text dark @click="shopping">輕旅歐洲</v-btn>
+            <v-btn text dark @click="admin">ADMIN</v-btn>
           </div>
         </v-toolbar>
       </v-container>
@@ -42,6 +42,18 @@ export default {
   methods: {
     changePage: function() {
       this.$router.push("/");
+    },
+    aboutUs: function() {
+      var vm = this;
+      vm.$router.push("/");
+    },
+    shopping: function() {
+      var vm = this;
+      vm.$router.push("/shopping");
+    },
+    admin: function() {
+      var vm = this;
+      vm.$router.push("/login");
     }
   }
 };
