@@ -7,10 +7,10 @@ import Products from '../components/pages/Products.vue'
 import Orders from '../components/pages/Orders.vue'
 import Shopping from '../components/pages/Shopping.vue'
 import CartList from '../components/pages/CartList.vue'
-import Home from '../components/Home.vue'
+import Home from '../components/pages/Home/Home'
 import OrderForm from '../components/pages/OrderForm.vue'
 import CustomerCheckOut from '../components/pages/CustomerCheckOut.vue'
-import HomePage from '../components/pages/HomePage.vue'
+import HomePage from '../components/pages/Home/template/HomePage'
 import Coupons from '../components/pages/Coupons.vue'
 
 Vue.use(VueRouter)
