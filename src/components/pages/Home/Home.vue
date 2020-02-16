@@ -1,7 +1,7 @@
 <template>
   <div>
     <Alert></Alert>
-    <v-contant>
+    <v-content>
       <v-container>
         <v-toolbar
           class="d-flex justify-start grey darken-1"
@@ -25,7 +25,7 @@
         </div>
         <router-view></router-view>
       </v-container>
-    </v-contant>
+    </v-content>
   </div>
 </template>
 
