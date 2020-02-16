@@ -4,25 +4,7 @@
       <loading :active.sync="isLoading"></loading>
     </div>
     <div class="shopping-page-container">
-      <div class="nav-location-list nav-scroller py-1">
-        <nav class="nav d-flex justify-content-space-around">
-          <a
-            class="p-2 text-muted hvr-underline-from-center"
-            href="#"
-            @click.prevent="visibility ='all'"
-          >全部</a>
-          <a
-            class="p-2 text-muted hvr-underline-from-center"
-            href="#"
-            @click.prevent="visibility ='north'"
-          >漫遊北歐</a>
-          <a
-            class="p-2 text-muted hvr-underline-from-center"
-            href="#"
-            @click.prevent="visibility ='south'"
-          >鄉村南歐</a>
-        </nav>
-      </div>
+      <Category @visibleCat="visibleCat"></Category>
       <div class="shopping-container row">
         <div class="col-md-4 mb-4" v-for="item in filterAry" :key="item.id">
           <div class="card border-0 shadow-sm">
@@ -72,7 +54,7 @@
       </div>
       <div class="cart-btn-container">
         <router-link to="/cart" class="btn cart-btn">
-          <i class="fas fa-shopping-cart fa-2x"> 
+          <i class="fas fa-shopping-cart fa-2x">
             <p class="cart-num">{{cartList.carts.length}}</p>
           </i>
         </router-link>
@@ -94,7 +76,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <img :src="product.imageUrl" class="img-fluid" alt>
+              <img :src="product.imageUrl" class="img-fluid" alt />
               <blockquote class="blockquote mt-3">
                 <p class="mb-0">{{product.content}}</p>
                 <footer class="blockquote-footer text-justify">{{product.description}}</footer>
@@ -128,6 +110,7 @@
 
 <script>
 import $ from "jquery";
+import Category from "./template/Category";
 export default {
   data: function() {
     return {
@@ -140,6 +123,9 @@ export default {
       visibility: "all",
       isLoading: false
     };
+  },
+  components: {
+    Category
   },
   methods: {
     getProducts: function() {
@@ -170,6 +156,10 @@ export default {
           vm.product = response.data.product;
         }
       });
+    },
+    visibleCat: function(category) {
+      var vm = this;
+      vm.visibility = category;
     },
     getCart: function() {
       let vm = this;
@@ -243,5 +233,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/_shopping.css";
+@import "../../../assets/css/_shopping.css";
 </style>
