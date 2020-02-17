@@ -5,17 +5,15 @@
       <Category @visibleCat="visibleCat"></Category>
       <div class="shopping-container row pa-10 teal darken-3">
         <div class="col-md-4 mb-4" v-for="item in filterAry" :key="item.id">
-          <div class="card border-0 shadow-sm">
+          <v-card>
             <!-- `url(${item.imageUrl})` 這是 es6 提供的用法，利用反引號插入變數 -->
-            <div
+            <v-img
               style="height: 150px; background-size: cover; background-position: center"
               :style="{backgroundImage: `url(${item.imageUrl})`}"
-            ></div>
+            ></v-img>
             <div class="card-body">
-              <span class="badge badge-secondary float-right ml-2">{{ item.category }}</span>
-              <h5 class="card-title">
-                <a href="#" class="text-dark card-title">{{ item.title }}</a>
-              </h5>
+              <v-card-subtitle class="pa-0">{{ item.category }}</v-card-subtitle>
+              <v-card-title class="pa-0">{{ item.title }}</v-card-title>
               <p class="card-text">{{ item.content }}</p>
               <div class="d-flex justify-content-between align-items-baseline">
                 <del
@@ -47,7 +45,7 @@
                 加入購物車
               </button>
             </div>
-          </div>
+          </v-card>
         </div>
       </div>
       <div class="cart-btn-container">
