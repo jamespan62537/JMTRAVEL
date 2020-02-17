@@ -86,19 +86,6 @@ input, select, textarea, button {
   }
 
 /* start */
-.nav-location-list {
-    padding: 10px 95px 10px 95px !important;
-    background-color: rgb(78, 87, 97) !important;
-  }
-  .nav-location-list .justify-content-space-around {
-    justify-content: space-around !important;
-  }
-  .nav-location-list .nav a {
-    text-decoration: none;
-    font-size: 20px;
-    color: rgb(255, 255, 255) !important;
-  }
-  
   .shopping-container {
     margin: unset;
     padding: 30px 80px;
