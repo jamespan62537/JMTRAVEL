@@ -1,11 +1,9 @@
 <template>
   <div>
-    <div class="vld-parent">
-      <loading :active.sync="isLoading"></loading>
-    </div>
+    <loading :active.sync="isLoading"></loading>
     <div class="shopping-page-container">
       <Category @visibleCat="visibleCat"></Category>
-      <div class="shopping-container row">
+      <div class="shopping-container row pa-10 teal darken-3">
         <div class="col-md-4 mb-4" v-for="item in filterAry" :key="item.id">
           <div class="card border-0 shadow-sm">
             <!-- `url(${item.imageUrl})` 這是 es6 提供的用法，利用反引號插入變數 -->

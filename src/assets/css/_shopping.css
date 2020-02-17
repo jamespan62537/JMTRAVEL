@@ -86,11 +86,6 @@ input, select, textarea, button {
   }
 
 /* start */
-  .shopping-container {
-    margin: unset;
-    padding: 30px 80px;
-    background-color: rgb(49, 81, 77);
-  }
   .shopping-container .col-md-4 .card {
     box-shadow: 1px 1px 9px -4px rgba(0, 0, 0, 1.5) !important;
   }
