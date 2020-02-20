@@ -31,6 +31,6 @@ export default {
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1020;
+    z-index: 996;
 }
 </style>

@@ -1,40 +1,85 @@
 <template>
-    <div>
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>管理員</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <i class="fas fa-box-open pd"></i>
-                <router-link to="/admin/products" class="nav-link in-b">產品列表</router-link>
-              </li>
-              <li class="nav-item">
-                <i class="fas fa-address-card pd"></i>
-                <router-link to="/admin/orders" class="nav-link in-b">訂單列表</router-link>
-              </li>
-              <li class="nav-item">
-                <i class="fas fa-ticket-alt pd"></i>
-                <router-link to="/admin/coupons" class="nav-link in-b">優惠券</router-link>
-              </li>
-            </ul>
-          </div>
-        </nav>    
-    </div>
+  <div>
+    <v-navigation-drawer
+      class="side-bar"
+      dark
+      style="position: fixed; left: 0; top: 53.6px; bottom: 0; z-index: 997;"
+    >
+      <v-img
+        src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/sidebar-3.jpg"
+        style=" background-position: center center;"
+        height="100%"
+      >
+        <v-layout
+          style="height: 100vh; background-color: rgba(0, 0, 0, 0.7); border-radius: unset;"
+          class="fill-height"
+          column
+          tag="v-list"
+        >
+          <v-list-item>
+            <v-list-item class="title">Admin</v-list-item>
+          </v-list-item>
+          <v-divider />
+          <v-list>
+            <v-list-group
+              v-model="item.active"
+              v-for="item in items"
+              :key="item.title"
+              :prepend-icon="item.action"
+              no-action
+              active-class="success--text"
+            >
+              <v-list-item slot="activator">
+                <v-list-item-content>
+                  <v-list-item class="pa-0">{{ item.title }}</v-list-item>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item
+                v-for="subItem in item.items"
+                :key="subItem.title"
+                ripple
+                @click
+                :to="subItem.link"
+                color="success"
+                style="background: rgba(81, 81, 81, 0.4)"
+              >
+                <v-list-item-content>
+                  <v-list-item v-text="subItem.title">></v-list-item>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
+        </v-layout>
+      </v-img>
+    </v-navigation-drawer>
+  </div>
 </template>
 
-<style scoped>
-.in-b{
-  display: inline-block;
-}
-.pd{
-  padding: 0.5rem 0 0.5rem 1rem;
-}
-.nav li:hover {
-  background-color: rgb(200, 200, 200);
-}
-</style>
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        {
+          action: "fas fa-box-open",
+          title: "產品管理",
+          active: false,
+          items: [{ title: "產品列表", link: "/admin/products" }]
+        },
+        {
+          action: "fas fa-address-card",
+          title: "訂單管理",
+          active: false,
+          items: [{ title: "訂單列表", link: "/admin/orders" }]
+        },
+        {
+          action: "fas fa-ticket-alt",
+          title: "活動管理",
+          active: false,
+          items: [{ title: "優惠券", link: "/admin/coupons" }]
+        }
+      ]
+    };
+  }
+};
+</script>
