@@ -63,9 +63,6 @@ input, select, textarea, button {
     font-size: 24px;    
     font-weight: 600;
 }
-form {
-    background-color: rgb(49, 81, 77);
-}
 .cart-list-container { 
   border: 1px solid rgba(0,0,0,0.1);
   margin: 0 auto;
