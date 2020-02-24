@@ -3,6 +3,7 @@
     <v-navigation-drawer
       class="side-bar"
       dark
+      permanent
       style="position: fixed; left: 0; top: 53.6px; bottom: 0; z-index: 997;"
     >
       <v-img
@@ -16,10 +17,12 @@
           column
           tag="v-list"
         >
-          <v-list-item>
-            <v-list-item class="title">Admin</v-list-item>
-          </v-list-item>
-          <v-divider />
+          <v-list>
+            <v-list-item-content>
+              <v-list-item-title class="pl-4">Admin</v-list-item-title>
+            </v-list-item-content>
+          </v-list>
+          <v-divider class="ma-0" />
           <v-list>
             <v-list-group
               v-model="item.active"
@@ -38,10 +41,9 @@
                 v-for="subItem in item.items"
                 :key="subItem.title"
                 ripple
-                @click
                 :to="subItem.link"
                 color="success"
-                style="background: rgba(81, 81, 81, 0.4)"
+                style="background: rgba(81, 81, 81, 0.4); text-decoration:none;"
               >
                 <v-list-item-content>
                   <v-list-item v-text="subItem.title">></v-list-item>
