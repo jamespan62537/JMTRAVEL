@@ -6,48 +6,11 @@
     margin: 0 auto;
     padding: 50px 0;
   }
-  .table {
-    margin-bottom: unset;
-  }
-  .table thead {
-    background-color: rgb(78, 87, 97) !important;
-    color: rgb(255, 255, 255) !important;
-    font-size: 20px;
-    font-weight: 600;
-    height: 56px;
-  }
   .table thead th {
-    height: 56px;
     vertical-align: middle;
-    border-bottom: unset;
-    border-top: unset;
-  }
-  .table .card-tbody {
-    background-color: rgb(49, 81, 77) !important;
-  }
-  .table tbody .cart-img {
-    background-position: center;
-    background-size: cover;
-  }
-  .table tbody tr {
-    height: 100px;
   }
   .table tbody tr td {
     vertical-align: middle;
-    border-top: 1px solid #dee2e6;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-  }
-  .table tbody .removeBtn {
-    color: rgb(220, 53, 69);
-    background-color: rgb(49, 81, 77);
-    border: unset;
-    border-radius: 3px;
-  }
-  .table tbody .removeBtn:hover {
-    background-color: rgb(220, 53, 69);
-    color: rgb(255, 255, 255);
-    transition: ease-in-out 0.1s;
   }
   .check-cart {
     background-color: rgb(49, 81, 77);

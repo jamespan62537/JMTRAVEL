@@ -1,16 +1,16 @@
 <template>
   <div class="products-area">
-    <div class="vld-parent">
-      <loading :active.sync="isLoading"></loading>
-    </div>
-    <v-container style="padding: unset; max-width:100%;">
+    <v-container fluid style="padding: unset;">
+      <div class="vld-parent">
+        <loading :active.sync="isLoading"></loading>
+      </div>
       <v-layout class="mb-3" justify-end>
         <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
           <v-btn color="orange darken-1" dark @click="openModal(true)">建立新產品</v-btn>
         </v-flex>
       </v-layout>
       <v-data-table
-        class="elevation-1"
+        class="elevation-1 table"
         :headers="headers"
         :items="items"
         :items-per-page="10"
@@ -192,8 +192,7 @@ export default {
         {
           text: "分類",
           value: "category",
-          class: "teal--text darken-1",
-          sortable: false
+          class: "teal--text darken-1"
         },
         {
           text: "名稱",
@@ -226,7 +225,7 @@ export default {
           sortable: false
         }
       ],
-      items: [{}],
+      items: [],
       tempProducts: {},
       isNew: false,
       pagination: {},

@@ -37,6 +37,7 @@
     "vuetify": "^2.2.12"
   },
   "devDependencies": {
+    "@mdi/font": "^4.9.95",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
     "css-loader": "^2.1.1",
