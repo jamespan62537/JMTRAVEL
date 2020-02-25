@@ -1,14 +1,10 @@
 <template>
-  <div class="container">
+  <div class="main">
     <Alert></Alert>
     <Navbar></Navbar>
-    <div class="container-fluid">
-      <div class="row">
-        <Sidebar></Sidebar>
-        <main role="main" class="main col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <router-view></router-view>
-        </main>
-      </div>
+    <div class="content">
+      <Sidebar></Sidebar>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -28,8 +24,13 @@ export default {
 </script>
 
 <style>
-.main th,
-td {
-  text-align: left;
+.main {
+  position: relative;
+  height: 100%;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 8px 15px 15px 270px;
 }
 </style>

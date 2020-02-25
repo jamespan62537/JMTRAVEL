@@ -89,13 +89,6 @@ input, select, textarea, button {
 html, body {
     font-family: '微軟正黑體' !important;
 }
-.container {
-    min-width: 100%;
-    padding: unset !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 .cover {
     background: url(../img/clouds-daylight-evening-51947.jpg);
     min-height: 60vh;

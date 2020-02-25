@@ -1,38 +1,31 @@
 <template>
-    <div>
-        <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous"
-                            @click.prevent="getPages(pages.current_page - 1)">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item" v-for="page in pages.total_pages" :key="page"
-                        :class="{'active': pages.current_page === page}">
-                        <a class="page-link" href="#" @click.prevent="getPages(page)"> {{page}} </a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next"
-                            @click.prevent="getPages(pages.current_page + 1)">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>        
-    </div>
+  <div>
+    <v-layout class="d-flex justify-center">
+      <v-flex class="d-flex justify-end">
+        <v-pagination
+          v-model="pages.current_page"
+          :length="pages.total_pages"
+          color="green darken-1"
+          next-icon="mdi-menu-right"
+          prev-icon="mdi-menu-left"
+          @input="getPages(pages.current_page)"
+        ></v-pagination>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-            pages: {
-                type: Object,
-            },
-    },
-    methods: {
-        getPages: function(page) {
-            this.$emit('callPage', page)
-        }
+  props: {
+    pages: {
+      type: Object
     }
-}
+  },
+  methods: {
+    getPages: function(page) {
+      this.$emit("callPage", page);
+    }
+  }
+};
 </script>

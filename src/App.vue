@@ -1,5 +1,5 @@
 <template>
-  <v-app style="width: 100%;">
+  <v-app style="background-color: rgb(238, 238, 238);">
     <router-view></router-view>
   </v-app>
 </template>
@@ -126,13 +126,6 @@ q {
 
 #app {
   font-family: "微軟正黑體";
-}
-.content-area {
-  width: 100%;
-  height: 100%;
-  padding: 80px 15px 15px 15px;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.5, 1);
-  transition-duration: 0.4s;
 }
 .panel_title {
   font-size: 18px;
