@@ -4,7 +4,7 @@
       class="side-bar"
       dark
       permanent
-      style="position: fixed; left: 0; top: 53.6px; bottom: 0; z-index: 997;"
+      style="position: fixed; left: 0; top: 48.3px; bottom: 0; z-index: 997;"
     >
       <v-img
         src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/sidebar-3.jpg"

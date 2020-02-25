@@ -31,6 +31,6 @@ export default {
 .content {
   width: 100%;
   height: 100%;
-  padding: 8px 15px 15px 270px;
+  padding: 55px 15px 15px 270px;
 }
 </style>
