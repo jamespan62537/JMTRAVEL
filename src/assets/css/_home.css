@@ -112,16 +112,13 @@ html, body {
 .container header .row .bg-b a:hover {
     background-color: rgb(20, 31, 12);
 }
-.container .cover p {
+.container-bg .cover p {
     color: rgb(255, 255, 255);
     border: 2px solid rgb(199, 147, 89);
     padding: 7px;
     line-height: 30px;
     width: 48px;
     cursor: default;
-    /* position: absolute;
-    bottom: 14%;
-    left: 45%; */
     margin: 0 auto;
     font-size: 25px;
 }
