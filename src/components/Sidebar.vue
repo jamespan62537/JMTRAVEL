@@ -13,7 +13,7 @@
       >
         <v-layout
           style="height: 100vh; background-color: rgba(0, 0, 0, 0.7); border-radius: unset;"
-          class="fill-height"
+          class="fill-height pa-0"
           column
           tag="v-list"
         >
