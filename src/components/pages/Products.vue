@@ -18,6 +18,10 @@
         style="background-color: rgb(255, 255, 255);"
         hide-default-footer
       >
+        <template v-slot:item.is_enabled="{ item }">
+          <p v-if="item.is_enabled">是</p>
+          <p v-else>否</p>
+        </template>
         <template v-slot:item.action="{ item }">
           <v-btn
             class="mr-5"
