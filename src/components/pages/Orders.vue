@@ -79,7 +79,6 @@ export default {
       this.$http.get(api).then(response => {
         if (response.data.success) {
           vm.items = response.data.orders;
-          console.log(vm.items);
           vm.pagination = response.data.pagination;
           vm.isLoading = false;
         }
