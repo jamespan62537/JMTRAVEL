@@ -1,35 +1,40 @@
 <template>
-  <div>
-    <div class="vld-parent">
-      <loading :active.sync="isLoading"></loading>
-    </div>
-    <div class="text-right">
-      <button class="btn btn-outline-primary btn-sm" @click="openModal(true)">建立新優惠券
-      </button>
-      <table class="table mt-4">
-        <thead>
-          <th width="150">名稱</th>
-          <th width="120">折扣數</th>
-          <th width="120">到期日</th>
-          <th width="120">是否啟用</th>
-          <th width="150">編輯</th>
-        </thead>
-        <tbody v-for="item in coupons" :key="item.id" class="card-tbody">
-          <tr>
-            <td>{{ item.title }}</td>
-            <td>{{ item.percent }}</td>
-            <td class="text-right">{{ item.due_date }}</td>
-            <td>
-              <span v-if="item.is_enabled === 1">啟用</span>
-              <span v-else>未啟用</span>
-            </td>
-            <td class="flex-seprate">
-              <button class="btn btn-outline-primary btn-sm mr-1" @click="openModal(false, item)">編輯</button>
-              <button class="btn btn-outline-primary btn-sm" @click="removeCoupons(item)">刪除</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="coupon-area">
+    <v-container fluid style="padding: unset;">
+      <div class="vld-parent">
+        <loading :active.sync="isLoading"></loading>
+      </div>
+    </v-container>
+    <v-layout class="mb-3" justify-end>
+      <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
+        <v-btn color="orange darken-1" dark @click="openModal(true)">建立新優惠券</v-btn>
+      </v-flex>
+    </v-layout>
+
+    <v-data-table
+      class="elevation-1 table"
+      :headers="headers"
+      :items="items"
+      :items-per-page="10"
+      item-key="id"
+      style="background-color: rgb(255, 255, 255);"
+      hide-default-footer
+    >
+      <template v-slot:item.is_enabled="{ item }">
+        <p v-if="item.is_enabled">是</p>
+        <p v-else>否</p>
+      </template>
+      <template v-slot:item.action="{ item }">
+        <v-btn
+          class="mr-5"
+          small
+          dark
+          color="light-blue darken-1"
+          @click="openModal(false, item)"
+        >編輯</v-btn>
+        <v-btn small dark color="pink darken-1" @click="removeCoupons(item)">刪除</v-btn>
+      </template>
+    </v-data-table>
       <div
         class="modal fade"
         id="productModal"
@@ -59,7 +64,7 @@
                       id="title"
                       placeholder="請輸入名稱"
                       v-model="tempCoupons.title"
-                    >
+                    />
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
@@ -70,7 +75,7 @@
                         id="category"
                         placeholder="請輸入折扣"
                         v-model="tempCoupons.percent"
-                      >
+                      />
                     </div>
                     <div class="form-group col-md-6">
                       <label for="price">到期日</label>
@@ -80,7 +85,7 @@
                         id="unit"
                         placeholder="請輸入期限"
                         v-model="tempCoupons.due_date"
-                      >
+                      />
                     </div>
                   </div>
                   <div class="form-row">
@@ -92,10 +97,10 @@
                         id="origin_price"
                         placeholder="請輸入折扣代碼"
                         v-model="tempCoupons.code"
-                      >
+                      />
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                   <div class="form-group">
                     <div class="form-check">
                       <input
@@ -105,7 +110,7 @@
                         v-model="tempCoupons.is_enabled"
                         :true-value="1"
                         :false-value="0"
-                      >
+                      />
                       <label class="form-check-label" for="is_enabled">是否啟用</label>
                     </div>
                   </div>
@@ -119,7 +124,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -129,6 +133,38 @@ import Pagination from "../../Pagination.vue";
 export default {
   data: function() {
     return {
+      headers: [
+        {
+          text: "折價券名稱",
+          value: "title",
+          class: "teal--text darken-1"
+        },
+        {
+          text: "折扣數",
+          value: "percent",
+          class: "teal--text darken-1",
+          sortable: false
+        },
+        {
+          text: "到期日",
+          value: "due_date",
+          class: "teal--text darken-1",
+          sortable: false
+        },
+        {
+          text: "是否啟用",
+          value: "is_enabled",
+          class: "teal--text darken-1",
+          sortable: false
+        },
+        {
+          text: "編輯",
+          value: "action",
+          class: "teal--text darken-1",
+          sortable: false
+        }
+      ],
+      items: [],
       coupons: [],
       tempCoupons: {
         title: "",
@@ -151,11 +187,10 @@ export default {
       const api =
         "https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupons";
       this.$http.get(api).then(response => {
-        // console.log(response.data);
+        console.log(response.data);
         if (response.data.success) {
           vm.isLoading = false;
-          vm.coupons = response.data.coupons;
-          console.log(vm.coupons);
+          vm.items = response.data.coupons;
         }
       });
     },
@@ -171,15 +206,13 @@ export default {
       // 如果 isNew 為 false 則執行此api (編輯用)
       if (!vm.isNew) {
         httpChange = "put";
-        var api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${
-          vm.tempCoupons.id
-        }`;
+        var api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${vm.tempCoupons.id}`;
       }
 
       this.$http[httpChange](api, { data: vm.tempCoupons }).then(response => {
         vm.isLoading = false;
         // console.log(response.data);
-        vm.coupons = response.data.coupone;
+        vm.items = response.data.coupone;
         $("#productModal").modal("hide");
         vm.getCoupons();
       });
@@ -187,9 +220,7 @@ export default {
     removeCoupons: function(item) {
       // api/:api_path/admin/coupon/:coupon_id
       var vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${
-        item.id
-      }`;
+      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${item.id}`;
       this.$http.delete(api).then(response => {
         // console.log(response.data);
         if (response.data.success) {
