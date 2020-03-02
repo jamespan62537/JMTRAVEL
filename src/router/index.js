@@ -11,7 +11,7 @@ import Home from '../components/pages/Home/Home'
 import OrderForm from '../components/pages/OrderForm.vue'
 import CustomerCheckOut from '../components/pages/CustomerCheckOut.vue'
 import HomePage from '../components/pages/Home/template/HomePage'
-import Coupons from '../components/pages/Coupons.vue'
+import Coupons from '../components/pages/Coupons/Coupons'
 
 Vue.use(VueRouter)
 
