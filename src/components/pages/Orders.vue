@@ -32,8 +32,8 @@ export default {
     return {
       headers: [
         {
-          text: "購買時間",
-          value: "create_at",
+          text: "買家",
+          value: "user.name",
           class: "teal--text darken-1"
         },
         {
@@ -79,6 +79,7 @@ export default {
       this.$http.get(api).then(response => {
         if (response.data.success) {
           vm.items = response.data.orders;
+          console.log(vm.items)
           vm.pagination = response.data.pagination;
           vm.isLoading = false;
         }
