@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Login from '../components/pages/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
-import Products from '../components/pages/Products.vue'
+import Products from '../components/pages/Products/Products'
 import Orders from '../components/pages/Orders.vue'
 import Shopping from '../components/pages/Shopping/Shopping'
 import CartList from '../components/pages/CartList.vue'
