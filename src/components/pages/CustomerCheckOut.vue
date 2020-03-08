@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div class="bg">
-      <div class="cart-list-container">
-        <!-- <div class="cart-list-title">
-          <h2>購物車清單</h2>
-        </div>-->
-        <br>
+    <div>
+      <div class="cart-list-container mt-10" style="background: rgb(255, 255, 255);">
         <form class="form-card" @submit.prevent="payOrder">
           <table class="table">
             <thead>
@@ -15,9 +11,9 @@
             </thead>
             <tbody>
               <tr class="h-6">
-                <th width="250" class="cl align-middle">旅遊地點</th>
-                <th width="200" class="cl align-middle text-center">人數</th>
-                <th width="210" class="text-center cl align-middle">單價</th>
+                <th width="250" class="align-middle teal--text darken-1">旅遊地點</th>
+                <th width="200" class="align-middle teal--text darken-1 text-center">人數</th>
+                <th width="210" class="align-middle teal--text darken-1 text-center">單價</th>
               </tr>
               <tr v-for="item in order.products" :key="item.id">
                 <td class="align-middle">{{ item.product.title }}</td>
@@ -41,23 +37,23 @@
             </thead>
             <tbody>
               <tr>
-                <th class="align-middle fs">Email</th>
+                <th class="align-middle teal--text">Email</th>
                 <td>{{ order.user.email }}</td>
               </tr>
               <tr>
-                <th class="align-middle fs">姓名</th>
+                <th class="align-middle teal--text">姓名</th>
                 <td>{{ order.user.name }}</td>
               </tr>
               <tr>
-                <th class="align-middle fs">收件人電話</th>
+                <th class="align-middle teal--text">收件人電話</th>
                 <td>{{ order.user.tel }}</td>
               </tr>
               <tr>
-                <th class="align-middle fs">收件人地址</th>
+                <th class="align-middle teal--text">收件人地址</th>
                 <td>{{ order.user.address }}</td>
               </tr>
               <tr>
-                <th class="align-middle fs">付款狀態</th>
+                <th class="align-middle teal--text">付款狀態</th>
                 <td>
                   <span v-if="!order.is_paid">尚未付款</span>
                   <span v-else class="text-success">付款完成</span>
