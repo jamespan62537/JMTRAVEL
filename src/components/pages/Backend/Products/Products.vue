@@ -245,7 +245,7 @@ export default {
       let vm = this;
       vm.isLoading = true;
       // /api/:api_path/admin/products?page=:page
-      const api = `${process.env.Vue_APP_API}/admin/products?page=${page}`;
+      const api = `${process.env.VUE_APP_API}/admin/products?page=${page}`;
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.items = response.data.products;
@@ -271,11 +271,11 @@ export default {
       let vm = this;
       var httpChange = "post";
       var api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/admin/product";
+        `${process.env.VUE_APP_API}/admin/product`;
       // 假設傳進值為false，作為編輯用
       if (!vm.isNew) {
         httpChange = "put";
-        api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/product/${vm.tempProducts.id}`;
+        api = `${process.env.VUE_APP_API}/admin/product/${vm.tempProducts.id}`;
       }
       this.$http[httpChange](api, { data: vm.tempProducts }).then(response => {
         console.log(response.data);
@@ -288,7 +288,7 @@ export default {
     },
     removeProduct: function(item) {
       let vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/product/${item.id}`;
+      const api = `${process.env.VUE_APP_API}/admin/product/${item.id}`;
       this.$http.delete(api).then(response => {
         // console.log(response.data)
         if (response.data.success) {
@@ -299,7 +299,7 @@ export default {
     uploadFile: function() {
       let vm = this;
       vm.uploadFileLoading = true;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/upload`;
+      const api = `${process.env.VUE_APP_API}/admin/upload`;
       console.log(this);
       const uploadedFile = this.$refs.files.files[0];
       var formData = new FormData();

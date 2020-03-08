@@ -94,7 +94,7 @@ export default {
     getCart: function() {
       let vm = this;
       vm.isLoading = true;
-      const api = "https://vue-course-api.hexschool.io/api/jamespantest1/cart";
+      const api = `${process.env.VUE_APP_API}/cart`;
       this.$http.get(api).then(response => {
         console.log(response.data.data);
         vm.isLoading = false;
@@ -109,7 +109,7 @@ export default {
     // 移除後再次取得購物車資訊
     removeCartItem: function(item) {
       let vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/cart/${item.id}`;
+      const api = `${process.env.VUE_APP_API}/cart/${item.id}`;
       this.$http.delete(api).then(response => {
         console.log(response.data);
         vm.getCart();
@@ -125,7 +125,7 @@ export default {
         code: vm.code
       };
       const api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/coupon";
+        `${process.env.VUE_APP_API}/coupon`;
       // 須注意 api 回傳結構
       this.$http.post(api, { data: coupon_code }).then(response => {
         console.log(response.data);

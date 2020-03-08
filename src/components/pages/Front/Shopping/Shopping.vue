@@ -129,7 +129,7 @@ export default {
       vm.isLoading = true;
       // /api/:api_path/admin/products?page=:page
       const api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/products";
+        `${process.env.VUE_APP_API}/products`;
       this.$http.get(api).then(response => {
         vm.isLoading = false;
         console.log(response.data);
@@ -143,7 +143,7 @@ export default {
       vm.isLoading = true;
       $("#productModal").modal("show");
       // /api/:api_path/admin/products?page=:page
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/product/${id}`;
+      const api = `${process.env.VUE_APP_API}/product/${id}`;
       this.$http.get(api).then(response => {
         // console.log(response.data)
         vm.isLoading = false;
@@ -160,7 +160,7 @@ export default {
     getCart: function() {
       let vm = this;
       vm.isLoading = true;
-      const api = "https://vue-course-api.hexschool.io/api/jamespantest1/cart";
+      const api = `${process.env.VUE_APP_API}/cart`;
       this.$http.get(api).then(response => {
         console.log("購物車", response.data.data);
         vm.isLoading = false;
@@ -172,7 +172,7 @@ export default {
     addCart: function(id, qty = 1) {
       let vm = this;
       vm.isLoading = true;
-      const api = "https://vue-course-api.hexschool.io/api/jamespantest1/cart";
+      const api = `${process.env.VUE_APP_API}/cart`;
       const cart = {
         product_id: id,
         qty

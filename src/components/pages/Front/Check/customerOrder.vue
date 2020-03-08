@@ -126,7 +126,7 @@ export default {
       let vm = this;
       // /api/:api_path/admin/products?page=:page
       const api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/products";
+        `${process.env.VUE_APP_API}/products`;
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.products = response.data.products;
@@ -138,7 +138,7 @@ export default {
       vm.status.loadingItem = id;
       $('#productModal').modal('show')
       // /api/:api_path/admin/products?page=:page
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/product/${id}`;
+      const api = `${process.env.VUE_APP_API}/product/${id}`;
       this.$http.get(api).then(response => {
         // console.log(response.data)
         if (response.data.success) {
@@ -150,7 +150,7 @@ export default {
     },
     addCart: function(id, qty = 1) {
       let vm = this;
-      const api = 'https://vue-course-api.hexschool.io/api/jamespantest1/cart';
+      const api = `${process.env.VUE_APP_API}/cart`;
       const cart = {
         product_id: id,
         qty,
@@ -163,7 +163,7 @@ export default {
     },
     getCart: function() {
        let vm = this;
-        const api = 'https://vue-course-api.hexschool.io/api/jamespantest1/cart';
+        const api = `${process.env.VUE_APP_API}/cart`;
         this.$http.get(api).then(response => {
           console.log(response.data.data.carts);
           if(response.data.success) {
@@ -173,7 +173,7 @@ export default {
     },
     removeCartItem: function(item) {
         let vm = this;
-        const api = `https://vue-course-api.hexschool.io/api/jamespantest1/cart/${item.id}`;
+        const api = `${process.env.VUE_APP_API}/cart/${item.id}`;
         this.$http.delete(api).then(response => {
           console.log(response.data);
           vm.getCart();

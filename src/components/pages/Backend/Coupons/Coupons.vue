@@ -185,7 +185,7 @@ export default {
       var vm = this;
       vm.isLoading = true;
       const api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupons";
+        `${process.env.VUE_APP_API}/admin/coupons`;
       this.$http.get(api).then(response => {
         console.log(response.data);
         if (response.data.success) {
@@ -201,12 +201,12 @@ export default {
       // 如果 isNew 為 true 則會執行此 api
       var httpChange = "post";
       var api =
-        "https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon";
+        `${process.env.VUE_APP_API}/admin/coupon`;
 
       // 如果 isNew 為 false 則執行此api (編輯用)
       if (!vm.isNew) {
         httpChange = "put";
-        var api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${vm.tempCoupons.id}`;
+        var api = `${process.env.VUE_APP_API}/admin/coupon/${vm.tempCoupons.id}`;
       }
 
       this.$http[httpChange](api, { data: vm.tempCoupons }).then(response => {
@@ -220,7 +220,7 @@ export default {
     removeCoupons: function(item) {
       // api/:api_path/admin/coupon/:coupon_id
       var vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/coupon/${item.id}`;
+      const api = `${process.env.VUE_APP_API}/admin/coupon/${item.id}`;
       this.$http.delete(api).then(response => {
         // console.log(response.data);
         if (response.data.success) {

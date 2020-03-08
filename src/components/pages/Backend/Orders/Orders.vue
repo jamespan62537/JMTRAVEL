@@ -75,7 +75,7 @@ export default {
       var vm = this;
       vm.isLoading = true;
       // /api/:api_path/admin/orders?page=:page
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/orders?page=${page}`;
+      const api = `${process.env.VUE_APP_API}/admin/orders?page=${page}`;
       this.$http.get(api).then(response => {
         if (response.data.success) {
           vm.items = response.data.orders;

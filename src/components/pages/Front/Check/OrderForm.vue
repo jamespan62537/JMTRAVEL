@@ -95,7 +95,7 @@ export default {
     // 建立訂單
     creatOrder: function() {
       var vm = this;
-      const api = "https://vue-course-api.hexschool.io/api/jamespantest1/order";
+      const api = `${process.env.VUE_APP_API}/order`;
       const order = vm.form;
       this.$validator.validate().then(valid => {
         if (valid) {

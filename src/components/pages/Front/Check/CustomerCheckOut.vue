@@ -87,7 +87,7 @@ export default {
     // 取得已加入購物車商品
     getOrder() {
       var vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/order/${
+      const api = `${process.env.VUE_APP_API}/order/${
         vm.orderId
       }`;
       this.$http.get(api).then(response => {
@@ -98,7 +98,7 @@ export default {
     // 付款
     payOrder() {
       var vm = this;
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/pay/${
+      const api = `${process.env.VUE_APP_API}/pay/${
         vm.orderId
       }`;
       this.$http.post(api).then(response => {
