@@ -151,5 +151,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../assets/css/_cartList.css";
+@import "../../../../assets/css/_cartList.css";
 </style>

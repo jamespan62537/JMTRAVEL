@@ -8,7 +8,7 @@
       >
         <div class="mr-5">
           <a class="text-muted" href="#" @click.prevent="changePage">
-            <img src="../../../assets/img/logo.png" alt />
+            <img src="../../../../assets/img/logo.png" alt />
           </a>
         </div>
         <div>
@@ -29,7 +29,7 @@
 
 <script>
 import $ from "jquery";
-import Alert from "../../AlertMessage";
+import Alert from "../../../AlertMessage";
 export default {
   data: function() {
     return {};
@@ -58,5 +58,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../assets/css/_home.css";
+@import "../../../../assets/css/_home.css";
 </style>
