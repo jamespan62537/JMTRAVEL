@@ -229,5 +229,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../assets/css/_shopping.css";
+@import "../../../../assets/css/_shopping.css";
 </style>

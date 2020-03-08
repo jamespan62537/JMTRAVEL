@@ -3,15 +3,15 @@ import VueRouter from 'vue-router'
 
 import Login from '../components/pages/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
-import Products from '../components/pages/Products/Products'
-import Orders from '../components/pages/Orders/Orders'
-import Shopping from '../components/pages/Shopping/Shopping'
+import Products from '../components/pages/Backend/Products/Products'
+import Orders from '../components/pages/Backend/Orders/Orders'
+import Shopping from '../components/pages/Front/Shopping/Shopping'
 import CartList from '../components/pages/Front/Cart/CartList.vue'
 import Home from '../components/pages/Front/Home/Home'
-import OrderForm from '../components/pages/OrderForm.vue'
-import CustomerCheckOut from '../components/pages/CustomerCheckOut.vue'
+import OrderForm from '../components/pages/Front/Check/OrderForm.vue'
+import CustomerCheckOut from '../components/pages/Front/Check/CustomerCheckOut.vue'
 import HomePage from '../components/pages/Home/template/HomePage'
-import Coupons from '../components/pages/Coupons/Coupons'
+import Coupons from '../components/pages/Backend/Coupons/Coupons'
 
 Vue.use(VueRouter)
 

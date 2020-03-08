@@ -117,5 +117,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/_customerCheckOut.css";
+@import "../../../../assets/css/_customerCheckOut.css";
 </style>
