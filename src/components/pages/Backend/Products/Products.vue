@@ -245,7 +245,7 @@ export default {
       let vm = this;
       vm.isLoading = true;
       // /api/:api_path/admin/products?page=:page
-      const api = `https://vue-course-api.hexschool.io/api/jamespantest1/admin/products?page=${page}`;
+      const api = `${process.env.Vue_APP_API}/admin/products?page=${page}`;
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.items = response.data.products;
