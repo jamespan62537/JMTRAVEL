@@ -47,54 +47,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <!-- <div class="bg"> -->
-    <!-- <div class="cart-list-empty" v-if="cartList.carts.length == 0">
-        <h2>目前尚無行程</h2>
-        <button class="btn" @click="changePage">BACK TO TRAVEL</button>
-    </div>-->
-    <!-- <div class="cart-list-container"> -->
-    <!-- 如果 isempty 為 false 代表購物車有品項 -->
-    <!-- <table class="table">
-          <thead>
-            <th width="200">
-              <h2>購物車清單</h2>
-            </th>
-            <th width="250">國家</th>
-            <th>人數</th>
-            <th width="120">小計</th>
-          </thead>
-          <tbody class="card-tbody">
-            <tr v-for="item in cartList.carts" :key="item.id">
-              <td>
-                <button class="removeBtn" @click.prevent="removeCartItem(item)">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </td>
-              <td>
-                {{item.product.title}}
-                <p class="text-primary" v-if="item.coupon">已套用優惠券</p>
-              </td>
-              <td>{{item.qty}}</td>
-              <td class="text-right" v-if="!item.price">{{item.total | currency}}</td>
-              <td v-if="item.price">{{item.total}}</td>
-              <td v-if="item.price">{{item.total}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="input-group flex coupons-group">
-          <input type="text" name id placeholder="請輸入優惠碼" v-model="code" />
-          <button @click="useCoupons">套用優惠碼</button>
-        </div>
-        <div class="check-cart flex">
-          <div class="h5 text-right total-price">總計: {{ cartList.total | currency }}</div>
-          <div
-            class="h5 text-right total-price dis-price"
-            v-if="cartList.final_total !== cartList.total"
-          >優惠價: {{ cartList.final_total | currency }}</div>
-          <router-link to="/order_form" class="h5 text-center next-step">建立訂單</router-link>
-        </div>
-      </div>
-    </div>-->
   </div>
 </template>
 
