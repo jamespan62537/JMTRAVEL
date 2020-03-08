@@ -10,7 +10,7 @@ import CartList from '../components/pages/Front/Cart/CartList.vue'
 import Home from '../components/pages/Front/Home/Home'
 import OrderForm from '../components/pages/Front/Check/OrderForm.vue'
 import CustomerCheckOut from '../components/pages/Front/Check/CustomerCheckOut.vue'
-import HomePage from '../components/pages/Home/template/HomePage'
+import HomePage from '../components/pages/Front/Home/template/HomePage'
 import Coupons from '../components/pages/Backend/Coupons/Coupons'
 
 Vue.use(VueRouter)

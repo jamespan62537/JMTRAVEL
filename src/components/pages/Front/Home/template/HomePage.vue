@@ -50,5 +50,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../../assets/css/_homepage.css";
+@import "../../../../../assets/css/_homepage.css";
 </style>
