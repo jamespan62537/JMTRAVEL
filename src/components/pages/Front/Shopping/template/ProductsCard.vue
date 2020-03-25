@@ -151,6 +151,17 @@ export default {
     }
   },
   methods: {
+    getCart: function() {
+      let vm = this;
+      vm.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/cart`;
+      this.$http.get(api).then(response => {
+        vm.isLoading = false;
+        if (response.data.success) {
+          vm.cartList = response.data.data;
+        }
+      });
+    },
     getProducts: function() {
       let vm = this;
       vm.isLoading = true;
