@@ -119,7 +119,6 @@ export default {
     return {
       product: {},
       products: [],
-      visibility: "all",
       status: {
         loadingItem: ""
       },
@@ -129,9 +128,9 @@ export default {
   computed: {
     filterAry: function() {
       var vm = this;
-      if (vm.visibility == "all") {
+      if (vm.$store.state.visibility == "all") {
         return vm.products;
-      } else if (vm.visibility == "north") {
+      } else if (vm.$store.state.visibility == "north") {
         var northAry = [];
         vm.products.forEach(function(item) {
           if (item.category == "北歐") {
@@ -139,7 +138,7 @@ export default {
           }
         });
         return northAry;
-      } else if (vm.visibility == "south") {
+      } else if (vm.$store.state.visibility == "south") {
         var southAry = [];
         vm.products.forEach(function(item) {
           if (item.category == "南歐") {

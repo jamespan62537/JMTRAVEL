@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <div class="shopping-page-container">
-      <Category @visibleCat="visibleCat"></Category>
+      <Category></Category>
         <ProductsCard></ProductsCard>
       <div class="cart-btn-container">
         <router-link to="/cart" class="btn cart-btn">
@@ -34,10 +34,6 @@ export default {
     ProductsCard
   },
   methods: {
-    visibleCat: function(category) {
-      var vm = this;
-      vm.visibility = category;
-    },
     getCart: function() {
       let vm = this;
       vm.isLoading = true;

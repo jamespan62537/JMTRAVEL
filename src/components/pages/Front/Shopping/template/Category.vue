@@ -12,7 +12,8 @@
 export default {
   methods: {
     visibleCat: function(visibility) {
-      this.$emit("visibleCat", visibility);
+      var vm = this;
+      vm.$store.dispatch("visibility", visibility);
     }
   }
 };
