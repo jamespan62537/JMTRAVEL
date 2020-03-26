@@ -1,9 +1,6 @@
 <template>
   <div class="coupon-area">
     <v-container fluid style="padding: unset;">
-      <div class="vld-parent">
-        <loading :active.sync="isLoading"></loading>
-      </div>
     </v-container>
     <v-layout class="mb-3" justify-end>
       <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
@@ -177,19 +174,18 @@ export default {
       isNew: false,
       pagination: {},
       uploadFileLoading: false,
-      isLoading: false
     };
   },
   methods: {
     getCoupons: function() {
       var vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       const api =
         `${process.env.VUE_APP_API}/admin/coupons`;
       this.$http.get(api).then(response => {
         console.log(response.data);
         if (response.data.success) {
-          vm.isLoading = false;
+          vm.$store.dispatch("updateLoading", false);
           vm.items = response.data.coupons;
         }
       });
@@ -197,7 +193,7 @@ export default {
     updateCoupons: function() {
       // /api/:api_path/admin/coupon/:id
       var vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       // 如果 isNew 為 true 則會執行此 api
       var httpChange = "post";
       var api =
@@ -210,7 +206,7 @@ export default {
       }
 
       this.$http[httpChange](api, { data: vm.tempCoupons }).then(response => {
-        vm.isLoading = false;
+        vm.$store.dispatch("updateLoading", false);
         // console.log(response.data);
         vm.items = response.data.coupone;
         $("#productModal").modal("hide");
@@ -220,10 +216,12 @@ export default {
     removeCoupons: function(item) {
       // api/:api_path/admin/coupon/:coupon_id
       var vm = this;
+      vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/admin/coupon/${item.id}`;
       this.$http.delete(api).then(response => {
         // console.log(response.data);
         if (response.data.success) {
+          vm.$store.dispatch("updateLoading", false);
           vm.getCoupons();
         }
       });
