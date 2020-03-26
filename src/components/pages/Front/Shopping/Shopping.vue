@@ -25,7 +25,6 @@ export default {
         loadingItem: ""
       },
       cartList: [],
-      isLoading: false,
       products: []
     };
   },

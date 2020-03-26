@@ -1,8 +1,5 @@
 <template>
   <div class="cart-area">
-    <div class="vld-parent">
-      <loading :active.sync="isLoading"></loading>
-    </div>
     <v-layout class="d-flex justify-center mt-10 mb-10" wrap>
       <v-flex lg10>
         <v-data-table
@@ -38,7 +35,10 @@
               <p style="font-size: 20px;">總計:$ {{ total }}</p>
             </v-flex>
             <v-flex lg12 justify-end>
-              <p  v-if="final_total !== total" style="font-size: 25px; color: red;">優惠價:$ {{ final_total }}</p>
+              <p
+                v-if="final_total !== total"
+                style="font-size: 25px; color: red;"
+              >優惠價:$ {{ final_total }}</p>
             </v-flex>
             <v-flex lg12 justify-end>
               <v-btn @click="createOrder" color="primary">建立訂單</v-btn>
@@ -83,8 +83,6 @@ export default {
       total: null,
       final_total: null,
       cartList: [],
-      isLoading: false,
-      isempty: false,
       code: ""
     };
   },
@@ -93,11 +91,10 @@ export default {
     // 並將內容存至 cartList
     getCart: function() {
       let vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/cart`;
       this.$http.get(api).then(response => {
-        console.log(response.data.data);
-        vm.isLoading = false;
+        vm.$store.dispatch("updateLoading", false);
         if (response.data.success) {
           vm.items = response.data.data.carts;
           vm.total = response.data.data.total;
@@ -109,9 +106,10 @@ export default {
     // 移除後再次取得購物車資訊
     removeCartItem: function(item) {
       let vm = this;
+      vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/cart/${item.id}`;
       this.$http.delete(api).then(response => {
-        console.log(response.data);
+        vm.$store.dispatch("updateLoading", false);
         vm.getCart();
       });
     },
@@ -120,21 +118,20 @@ export default {
     },
     useCoupons: function() {
       let vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       const coupon_code = {
         code: vm.code
       };
-      const api =
-        `${process.env.VUE_APP_API}/coupon`;
+      const api = `${process.env.VUE_APP_API}/coupon`;
       // 須注意 api 回傳結構
       this.$http.post(api, { data: coupon_code }).then(response => {
         console.log(response.data);
         if (response.data.success) {
-          vm.isLoading = false;
+          vm.$store.dispatch("updateLoading", false);
           this.$bus.$emit("alertMessage", response.data.message, "success");
           vm.getCart();
         } else {
-          vm.isLoading = false;
+          vm.$store.dispatch("updateLoading", false);
           this.$bus.$emit("alertMessage", response.data.message, "danger");
         }
       });
