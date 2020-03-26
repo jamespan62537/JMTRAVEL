@@ -11,10 +11,12 @@ https://jamespan62537.github.io/JMTRAVEL/dist/index.html#/
 * 前台：
   * 商品展示
   * 購物車
-  * 優惠卷套用 (優惠碼: 1111)
+  * 優惠卷套用 (優惠碼: 999)
   * 訂單介面
   * 結帳介面
 * 後台：
+  * 測試帳號: jmtravel1@gmail.com
+  * 測試密碼: jmtravel1
   * 商品管理: 新增、修改、刪除
   * 訂單管理
   * 優惠券管理: 新增、修改、刪除 
@@ -25,6 +27,7 @@ https://jamespan62537.github.io/JMTRAVEL/dist/index.html#/
 * API介接 (前台/後台)
 * SCSS
 * Plugin :
+  * [Vuex](https://vuex.vuejs.org/guide/)
   * [Vuetify](https://vuetifyjs.com/en/)
   * [Bootstrap 4](https://bootstrap-vue.js.org/docs)
   * [Axios](https://github.com/axios/axios)
