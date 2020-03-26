@@ -95,12 +95,13 @@ export default {
     // 建立訂單
     creatOrder: function() {
       var vm = this;
+      vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/order`;
       const order = vm.form;
       this.$validator.validate().then(valid => {
         if (valid) {
           this.$http.post(api, { data: order }).then(response => {
-            vm.isLoading = false;
+           vm.$store.dispatch("updateLoading", false);
             console.log(response.data);
             if(response.data.success) {
                 vm.$router.push(`/customer_checkout/${response.data.orderId}`);

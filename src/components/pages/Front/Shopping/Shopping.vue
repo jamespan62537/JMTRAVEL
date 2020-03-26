@@ -70,10 +70,10 @@ export default {
     },
     getCart: function() {
       let vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/cart`;
       this.$http.get(api).then(response => {
-        vm.isLoading = false;
+        vm.$store.dispatch("updateLoading", false);
         if (response.data.success) {
           vm.cartList = response.data.data;
         }
@@ -81,7 +81,6 @@ export default {
     },
     addCart: function(id, qty) {
       let vm = this;
-      vm.isLoading = true;
       vm.$store.dispatch("updateLoading", true);
       const api = `${process.env.VUE_APP_API}/cart`;
       const cart = {
