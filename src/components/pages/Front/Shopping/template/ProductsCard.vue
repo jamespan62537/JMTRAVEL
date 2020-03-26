@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="shopping-container row pa-10 teal darken-3">
-      <div class="col-md-4 mb-4" v-for="item in filterAry" :key="item.id">
+      <div class="col-md-4 mb-4" v-for="item in item" :key="item.id">
         <v-card>
           <v-img
             style="height: 150px; background-size: cover; background-position: center"
@@ -115,6 +115,11 @@
 <script>
 import $ from "jquery";
 export default {
+  props: {
+    item: {
+      type: Array
+    }
+  },
   data() {
     return {
       product: {},
@@ -125,71 +130,13 @@ export default {
       dialog: false
     };
   },
-  computed: {
-    filterAry: function() {
-      var vm = this;
-      if (vm.$store.state.visibility == "all") {
-        return vm.products;
-      } else if (vm.$store.state.visibility == "north") {
-        var northAry = [];
-        vm.products.forEach(function(item) {
-          if (item.category == "北歐") {
-            northAry.push(item);
-          }
-        });
-        return northAry;
-      } else if (vm.$store.state.visibility == "south") {
-        var southAry = [];
-        vm.products.forEach(function(item) {
-          if (item.category == "南歐") {
-            southAry.push(item);
-          }
-        });
-        return southAry;
-      }
-    }
-  },
   methods: {
-    getCart: function() {
-      let vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/cart`;
-      this.$http.get(api).then(response => {
-        vm.isLoading = false;
-        if (response.data.success) {
-          vm.cartList = response.data.data;
-        }
-      });
+    addCart: function(id, qty=1) {
+      var vm = this;
+      console.log(id)
+      vm.$emit("addCart", id, qty);
     },
-    getProducts: function() {
-      let vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/products`;
-      this.$http.get(api).then(response => {
-        vm.isLoading = false;
-        console.log(response.data);
-        vm.products = response.data.products;
-        vm.pagination = response.data.pagination;
-      });
-    },
-    addCart: function(id, qty = 1) {
-      let vm = this;
-      vm.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/cart`;
-      const cart = {
-        product_id: id,
-        qty
-      };
-      this.$http.post(api, { data: cart }).then(response => {
-        console.log(response.data);
-        vm.isLoading = false;
-        if (response.data.success) {
-          this.$bus.$emit("alertMessage", "已加入購物車", "success");
-          $("#productModal").modal("hide");
-          vm.getCart();
-        }
-      });
-    },
+    
     getProduct: function(id) {
       let vm = this;
       vm.status.loadingItem = id;
@@ -206,8 +153,5 @@ export default {
       });
     }
   },
-  created() {
-    this.getProducts();
-  }
 };
 </script>

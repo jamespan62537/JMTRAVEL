@@ -1,16 +1,19 @@
 <template>
   <v-app style="background-color: rgb(238, 238, 238);">
+    <loading :active.sync="isLoading"></loading>
     <router-view></router-view>
   </v-app>
 </template>
 
 <script>
-import Login from "./components/pages/Login.vue";
-
 export default {
-  name: "App",
-  components: {
-    Login
+  data() {
+    return {};
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading;
+    }
   }
 };
 </script>
