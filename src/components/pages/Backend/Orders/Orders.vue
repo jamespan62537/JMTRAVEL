@@ -1,8 +1,5 @@
 <template>
   <div class="orders-area">
-    <div class="vld-parent">
-      <loading :active.sync="isLoading"></loading>
-    </div>
     <v-data-table
       class="elevation-1 table"
       :headers="headers"
@@ -63,7 +60,6 @@ export default {
       ],
       items: [],
       products: [],
-      isLoading: false,
       pagination: {}
     };
   },
@@ -73,15 +69,14 @@ export default {
   methods: {
     getOrders: function(page = 1) {
       var vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       // /api/:api_path/admin/orders?page=:page
       const api = `${process.env.VUE_APP_API}/admin/orders?page=${page}`;
       this.$http.get(api).then(response => {
         if (response.data.success) {
+          vm.$store.dispatch("updateLoading", false);
           vm.items = response.data.orders;
-          console.log(vm.items)
           vm.pagination = response.data.pagination;
-          vm.isLoading = false;
         }
       });
     }

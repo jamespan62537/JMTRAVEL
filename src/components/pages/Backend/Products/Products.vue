@@ -1,9 +1,6 @@
 <template>
   <div class="products-area">
     <v-container fluid style="padding: unset;">
-      <div class="vld-parent">
-        <loading :active.sync="isLoading"></loading>
-      </div>
       <v-layout class="mb-3" justify-end>
         <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
           <v-btn color="orange darken-1" dark @click="openModal(true)">建立新產品</v-btn>
@@ -234,7 +231,6 @@ export default {
       isNew: false,
       pagination: {},
       uploadFileLoading: false,
-      isLoading: false
     };
   },
   components: {
@@ -243,14 +239,13 @@ export default {
   methods: {
     getProducts: function(page = 1) {
       let vm = this;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       // /api/:api_path/admin/products?page=:page
       const api = `${process.env.VUE_APP_API}/admin/products?page=${page}`;
       this.$http.get(api).then(response => {
-        console.log(response);
+        vm.$store.dispatch("updateLoading", false);
         vm.items = response.data.products;
         vm.pagination = response.data.pagination;
-        vm.isLoading = false;
       });
     },
     // 如果觸發 openModal 的 isNew === true，將傳送一個空的 tempProducts 物件 (意即打開的 Modal 所有欄位為空值)
