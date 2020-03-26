@@ -247,7 +247,7 @@ export default {
       // /api/:api_path/admin/products?page=:page
       const api = `${process.env.VUE_APP_API}/admin/products?page=${page}`;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        console.log(response);
         vm.items = response.data.products;
         vm.pagination = response.data.pagination;
         vm.isLoading = false;
