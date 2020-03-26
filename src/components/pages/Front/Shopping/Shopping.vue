@@ -94,7 +94,6 @@ export default {
         vm.$store.dispatch("updateLoading", false);
         if (response.data.success) {
           this.$bus.$emit("alertMessage", "已加入購物車", "success");
-          $("#productModal").modal("hide");
           vm.getCart();
         }
       });
