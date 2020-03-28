@@ -3,7 +3,7 @@
     <v-container fluid style="padding: unset;">
       <v-layout class="mb-3" justify-end>
         <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
-          <v-btn color="orange darken-1" dark @click="openModal(true)">建立新產品</v-btn>
+          <CreateProduct @getProducts="getProducts" />
         </v-flex>
       </v-layout>
       <v-data-table
@@ -20,13 +20,7 @@
           <p v-else>否</p>
         </template>
         <template v-slot:item.action="{ item }">
-          <v-btn
-            class="mr-5"
-            small
-            dark
-            color="light-blue darken-1"
-            @click="openModal(false, item)"
-          >編輯</v-btn>
+          <ModifyProduct class="d-inline-block" :item="tempProducts" @openDialog="openDialog(false, item)" />
           <v-btn small dark color="pink darken-1" @click="removeProduct(item)">刪除</v-btn>
         </template>
       </v-data-table>
@@ -185,8 +179,15 @@
 
 <script>
 import $ from "jquery";
+import CreateProduct from "./template/CreateProduct";
+import ModifyProduct from "./template/ModifyProduct";
 import Pagination from "../../../Pagination.vue";
 export default {
+  components: {
+    Pagination,
+    CreateProduct,
+    ModifyProduct
+  },
   data: function() {
     return {
       headers: [
@@ -230,11 +231,8 @@ export default {
       tempProducts: {},
       isNew: false,
       pagination: {},
-      uploadFileLoading: false,
+      uploadFileLoading: false
     };
-  },
-  components: {
-    Pagination
   },
   methods: {
     getProducts: function(page = 1) {
@@ -248,6 +246,18 @@ export default {
         vm.pagination = response.data.pagination;
       });
     },
+    openDialog: function(isNew, item) {
+      console.log(isNew, item);
+      var vm = this;
+      if (isNew) {
+        vm.tempProducts = {};
+        vm.isNew = true;
+      } else {
+        vm.tempProducts = Object.assign({}, item);
+        vm.isNew = false;
+      }
+    },
+
     // 如果觸發 openModal 的 isNew === true，將傳送一個空的 tempProducts 物件 (意即打開的 Modal 所有欄位為空值)
     // 觸發後回傳 isNew = true，用於下一步新建產品用
     openModal: function(isNew, item) {
@@ -265,8 +275,7 @@ export default {
     updateProduct: function() {
       let vm = this;
       var httpChange = "post";
-      var api =
-        `${process.env.VUE_APP_API}/admin/product`;
+      var api = `${process.env.VUE_APP_API}/admin/product`;
       // 假設傳進值為false，作為編輯用
       if (!vm.isNew) {
         httpChange = "put";
