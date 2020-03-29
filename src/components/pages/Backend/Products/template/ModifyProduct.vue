@@ -31,38 +31,80 @@
                 color="purple"
                 hide-details
               ></v-file-input>
-              <img alt />
+              <img class="img-fluid mt-5" :src="item.imageUrl" alt />
             </v-col>
             <v-col>
               <v-row>
                 <v-col cols="12" class="pt-0">
-                  <v-text-field label="請輸入標題" outlined dense color="purple" hide-details></v-text-field>
+                  <v-text-field
+                    v-model="item.title"
+                    label="請輸入標題"
+                    outlined
+                    dense
+                    color="purple"
+                    hide-details
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field label="請輸入分類" outlined dense color="purple" hide-details></v-text-field>
+                  <v-text-field
+                    v-model="item.category"
+                    label="請輸入分類"
+                    outlined
+                    dense
+                    color="purple"
+                    hide-details
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field label="請輸入單位" outlined dense color="purple" hide-details></v-text-field>
+                  <v-text-field
+                    v-model="item.unit"
+                    label="請輸入單位"
+                    outlined
+                    dense
+                    color="purple"
+                    hide-details
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field label="請輸入原價" outlined dense color="purple" hide-details></v-text-field>
+                  <v-text-field
+                    v-model="item.origin_price"
+                    label="請輸入原價"
+                    outlined
+                    dense
+                    color="purple"
+                    hide-details
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field label="請輸入售價" outlined dense color="purple" hide-details></v-text-field>
+                  <v-text-field
+                    v-model="item.price"
+                    label="請輸入售價"
+                    outlined
+                    dense
+                    color="purple"
+                    hide-details
+                  ></v-text-field>
                 </v-col>
                 <hr />
                 <v-col cols="12">
-                  <v-textarea label="請輸入產品描述" outlined auto-grow rows="3" shaped></v-textarea>
+                  <v-textarea v-model="item.description" label="請輸入產品描述" outlined shaped></v-textarea>
                 </v-col>
                 <v-col cols="12">
-                  <v-textarea label="請輸入產品說明內容" outlined auto-grow rows="3" shaped></v-textarea>
+                  <v-textarea
+                    v-model="item.content"
+                    label="請輸入產品說明內容"
+                    outlined
+                    auto-grow
+                    rows="3"
+                    shaped
+                  ></v-textarea>
                 </v-col>
               </v-row>
             </v-col>
           </v-row>
           <v-row>
             <v-col class="d-flex justify-end" cols="12">
-              <v-btn class="mr-3" color="green darken-1" dark>確認</v-btn>
+              <v-btn class="mr-3" color="green darken-1" dark @click="uploadProduct(item)">確認</v-btn>
             </v-col>
           </v-row>
         </v-form>
@@ -86,10 +128,14 @@ export default {
   },
   computed: {},
   methods: {
+    getProducts: function() {
+      var vm = this;
+      vm.$emit("getProducts");
+    },
     openDialog: function() {
       var vm = this;
       vm.dialog = true;
-      vm.$emit("openDialog");
+      vm.$emit("editProduct");
     },
     uploadFile: function() {
       let vm = this;
@@ -116,8 +162,21 @@ export default {
             this.$bus.$emit("alertMessage", response.data.message, "danger");
           }
         });
+    },
+    uploadProduct: function(item) {
+      var vm = this;
+      vm.$store.dispatch("updateLoading", true);
+      var api = `${process.env.VUE_APP_API}/admin/product/${item.id}`;
+      this.$http.put(api, { data: item }).then(response => {
+        console.log(response.data);
+        if (response.data.success) {
+          vm.$store.dispatch("updateLoading", false);
+          vm.getProducts();
+          this.$bus.$emit("alertMessage", "編輯成功", "success");
+          vm.dialog = false;
+        }
+      });
     }
   },
-  created() {}
 };
 </script>

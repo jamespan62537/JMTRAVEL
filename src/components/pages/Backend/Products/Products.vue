@@ -20,7 +20,12 @@
           <p v-else>否</p>
         </template>
         <template v-slot:item.action="{ item }">
-          <ModifyProduct class="d-inline-block" :item="tempProducts" @openDialog="openDialog(false, item)" />
+          <ModifyProduct
+            class="d-inline-block"
+            :item="tempProducts"
+            @editProduct="editProduct(item)"
+            @getProducts="getProducts()"
+          />
           <v-btn small dark color="pink darken-1" @click="removeProduct(item)">刪除</v-btn>
         </template>
       </v-data-table>
@@ -246,16 +251,10 @@ export default {
         vm.pagination = response.data.pagination;
       });
     },
-    openDialog: function(isNew, item) {
-      console.log(isNew, item);
+    editProduct: function(item) {
       var vm = this;
-      if (isNew) {
-        vm.tempProducts = {};
-        vm.isNew = true;
-      } else {
-        vm.tempProducts = Object.assign({}, item);
-        vm.isNew = false;
-      }
+      vm.tempProducts = Object.assign({}, item);
+      vm.isNew = false;
     },
 
     // 如果觸發 openModal 的 isNew === true，將傳送一個空的 tempProducts 物件 (意即打開的 Modal 所有欄位為空值)
