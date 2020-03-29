@@ -99,6 +99,10 @@
                     shaped
                   ></v-textarea>
                 </v-col>
+                <v-col cols="12">
+                  <p>是否啟用</p>
+                  <v-switch v-model="item.is_enabled"></v-switch>
+                </v-col>
               </v-row>
             </v-col>
           </v-row>
@@ -177,6 +181,6 @@ export default {
         }
       });
     }
-  },
+  }
 };
 </script>
