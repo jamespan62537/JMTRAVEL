@@ -20,7 +20,7 @@
           <p v-else>否</p>
         </template>
         <template v-slot:item.action="{ item }">
-          <ModifyProduct
+          <EditProduct
             class="d-inline-block"
             :item="tempProducts"
             @editProduct="editProduct(item)"
@@ -38,8 +38,7 @@
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
-        >
-        </div>
+        ></div>
       </div>
     </v-container>
   </div>
@@ -48,13 +47,13 @@
 <script>
 import $ from "jquery";
 import CreateProduct from "./template/CreateProduct";
-import ModifyProduct from "./template/ModifyProduct";
+import EditProduct from "./template/EditProduct";
 import Pagination from "../../../Pagination.vue";
 export default {
   components: {
     Pagination,
     CreateProduct,
-    ModifyProduct
+    EditProduct
   },
   data: function() {
     return {
@@ -129,7 +128,7 @@ export default {
           vm.getProducts();
         }
       });
-    },
+    }
   },
   created() {
     this.getProducts();
