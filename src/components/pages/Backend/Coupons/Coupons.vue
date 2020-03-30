@@ -3,7 +3,7 @@
     <v-container fluid style="padding: unset;"></v-container>
     <v-layout class="mb-3" justify-end>
       <v-flex class="d-flex justify-end" lg2 sm2 xs12 ma-1>
-        <v-btn color="orange darken-1" dark @click="openModal(true)">建立新優惠券</v-btn>
+        <CreateCoupon @getCoupons="getCoupons" />
       </v-flex>
     </v-layout>
 
@@ -126,7 +126,11 @@
 <script>
 import $ from "jquery";
 import Pagination from "../../../Pagination.vue";
+import CreateCoupon from "./template/CreateCoupon";
 export default {
+  components: {
+    CreateCoupon
+  },
   data: function() {
     return {
       headers: [
@@ -203,6 +207,7 @@ export default {
       }
 
       this.$http[httpChange](api, { data: vm.tempCoupons }).then(response => {
+        console.log(vm.tempCoupons)
         vm.$store.dispatch("updateLoading", false);
         $("#productModal").modal("hide");
         vm.items = response.data.coupone;
